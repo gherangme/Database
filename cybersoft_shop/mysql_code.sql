@@ -1,0 +1,38 @@
+CREATE DATABASE cybersoft_shop;
+DROP DATABASE cybersoft_shop;
+USE cybersoft_shop;
+CREATE TABLE LoaiSanPham (
+	MaLoaiSP INT PRIMARY KEY AUTO_INCREMENT,
+    TenLoaiSP VARCHAR(50)
+);
+CREATE TABLE SanPham(
+	MaSP INT PRIMARY KEY AUTO_INCREMENT,
+	MoTa VARCHAR(255),
+    Gia INT,
+    TenSP VARCHAR(255),
+    MaLoaiSP INT,
+    FOREIGN KEY (MaLoaiSP) REFERENCES LoaiSanPham(MaLoaiSP)
+);
+CREATE TABLE KhachHang(
+	MaKH INT PRIMARY KEY AUTO_INCREMENT,
+    DiaChi VARCHAR(255),
+    Email VARCHAR(50),
+    Ho VARCHAR(10),
+    Ten VARCHAR(10),
+    SoDT INT
+);
+CREATE TABLE HoaDon(
+	MaHoaDon INT PRIMARY KEY AUTO_INCREMENT,
+    NgayMua DATE,
+    MaKH INT,
+    FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH)
+);
+CREATE TABLE YeuCau(
+    MaSP INT,
+    MaHoaDon INT,
+	SoLuong INT,
+    GiaBan INT,
+    PRIMARY KEY(MaSP, MaHoaDon),
+    FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP),
+    FOREIGN KEY (MaHoaDon)  REFERENCES HoaDon(MaHoaDon)
+);
