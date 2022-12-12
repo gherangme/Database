@@ -57,7 +57,7 @@ CREATE TABLE ChiTietDonHang (
     DonGia INT,
     PRIMARY KEY (MaSach, MaDonHang),
     FOREIGN KEY (MaSach) REFERENCES Sach(MaSach),
-	FOREIGN KEY (MaDonHang) REFERENCES DonHang(MaDonHang)
+    FOREIGN KEY (MaDonHang) REFERENCES DonHang(MaDonHang)
 );
 CREATE TABLE ChiTietTacGia (
     MaSach INT,
